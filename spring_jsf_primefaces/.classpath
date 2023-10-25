@@ -94,5 +94,6 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/start-1.0.1.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/taglib-core-0.4.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/xmlbeans-1.0.3.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/mysql-connector-java-5.1.47.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
