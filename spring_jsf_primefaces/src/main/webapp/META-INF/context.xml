@@ -29,7 +29,7 @@
 	<!-- https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html -->
 	
 	
-	<!-- MySql
+	<!-- MySql 
 	<Resource name="jdbc/myDataSource" 
 			   auth="Container" 
 			   type="javax.sql.DataSource"
