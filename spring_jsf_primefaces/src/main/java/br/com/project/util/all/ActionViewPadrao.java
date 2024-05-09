@@ -2,6 +2,7 @@ package br.com.project.util.all;
 
 import java.io.Serializable;
 
+//import jakarta.annotation.PostConstruct;
 import javax.annotation.PostConstruct;
 
 public interface ActionViewPadrao extends Serializable {

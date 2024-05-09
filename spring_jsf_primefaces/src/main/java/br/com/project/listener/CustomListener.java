@@ -22,7 +22,7 @@ public class CustomListener implements RevisionListener, Serializable {
 		Entidade entidade = new Entidade();
 		
 		if (idUser != null && idUser != 0L) {
-			entidade.setEnt_id(idUser);
+			entidade.setEnt_codigo(idUser);
 			informacaoRevisao.setEntidade(entidade);
 		}
 	}

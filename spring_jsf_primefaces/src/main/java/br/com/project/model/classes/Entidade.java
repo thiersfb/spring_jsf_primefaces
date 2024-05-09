@@ -14,17 +14,17 @@ public class Entidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private Long ent_id;
+	private Long ent_codigo;
 	private String ent_login = null;
 	private String ent_senha = null;
 	private boolean ent_inativo = false;
 	
-	public Long getEnt_id() {
-		return ent_id;
+	public Long getEnt_codigo() {
+		return ent_codigo;
 	}
 
-	public void setEnt_id(Long ent_id) {
-		this.ent_id = ent_id;
+	public void setEnt_codigo(Long ent_codigo) {
+		this.ent_codigo = ent_codigo;
 	}
 
 	public void setEnt_login(String ent_login) {
