@@ -10,11 +10,13 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 	<title><ui:insert name="titulo">Caixaki</ui:insert></title>
 
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+	<h:outputStylesheet name="login.css" library="css" />
 	<h:outputScript name="scripty.js" library="javascript" />
 
 </h:head>
 <h:body>
-
+	<!-- 
 	<div id="imagemLogin">
 		<h:graphicImage library="img" name="logocaixaaqui.png" styleClass="bordaImagem" />
 	</div>
@@ -22,7 +24,76 @@
 	<div id="keysLogin" >
 		<h:graphicImage library="img" name="keys.png" styleClass="bordaImagem" />
 	</div>
+	 -->
+			
+	<div class="container" id="container">
+		<div class="form-container sign-up-container">
+			<form id="frmCadastro" name="frmCadastro" method="post" action="#" >
+				<h1>Criar Cadastro</h1>
+				
+				
+				<div id="frmCadName" style="width:100%;">
+					<input id="j_newusername" name="j_newusername" type="text" placeholder="Login" />
+				</div>
+				<div id="frmCadEmail" style="width:100%;">
+					<input id="j_newemail" name="j_newemail" type="email" placeholder="Email" />
+				</div>
+				<div id="frmCadPassword" style="width:100%;">
+					<!-- <input id="txtCadPassword" 		type="password" placeholder="Senha" /> -->
+					<input id="j_newpassword" name="j_newpassword" type="password" placeholder="Senha" />
+					<i id="toggleCadConfPassword" class="bi bi-eye-slash" style="padding-top: 42%;"></i>
+				</div>
+				<div id="frmCadConfPassword"  style="width:100%;">
+					<!-- <input id="txtCadConfPassword" 	type="password" placeholder="Confirme a senha" /> -->
+					<input id="j_newpasswordconf" name="j_newpasswordconf" type="password" placeholder="Confirme a senha" />
+					<i id="toggleCadPassword" class="bi bi-eye-slash" style="padding-top: 12%;"></i>
+				</div>
+
+				<button id="btnCadastrar">Cadastrar</button>
+			</form>
+		</div>
+		<div class="form-container sign-in-container">
+			<!-- <form action="#"> -->
+			<form id="formulario" name="formulario" method="post" 
+				onsubmit="return validarSenhaLogin();" 
+				action="#{request.contextPath}/j_spring_security_check" >
+				<h1>Login</h1>
+				<main>
+					<!-- 
+					<input id="txtLogEmail" 		type="email" placeholder="Email" />
+					<input id="txtLogPassword" name="txtLogPassword"		type="password" placeholder="Senha" />
+					 -->
+					<input type="text" id="j_username" name="j_username" placeholder="Login" />
+					<input type="password" id="j_password" name="j_password" placeholder="Senha" />
+					<i id="toggleLogPassword" class="bi bi-eye-slash"></i>
+				</main>
+				<a href="#">Esqueceu a senha?</a>
+				<!-- <button id="btnLogar">Entrar</button> -->
+				<!-- <button type="submit" class="blue" style="height: 40px; width: 100px; background: #CDCDC1; border: 1px;" id="buttonLogin">Entrar</button> -->
+				<button type="submit" id="buttonLogin">Entrar</button>
+				
+			</form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Bem-vindo de volta!</h1>
+					<p>Clique aqui para digitar seus dados de acesso</p>
+					<button class="ghost" id="signIn">Sou cadastrado</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Não possui cadastro?</h1>
+					<p>Digite seus dados e comece sua jornada conosco</p>
+					
+					<button class="ghost" id="signUp">Quero me cadastrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	
+	<br/>
+	<br/>
+	 
 	<div id="formLogin">
 		<br/>
 		<h:panelGroup rendered="#{!empty param.login_error}">
@@ -43,9 +114,13 @@
 			
 		</h:panelGroup>
 		
-		<br/>
 		
-		<form id="formulario" name="formulario" method="post" 
+	</div>
+		
+	<br/>
+	
+	
+		<!-- <form id="formulario" name="formulario" method="post" 
 			onsubmit="return validarSenhaLogin();" 
 			action="#{request.contextPath}/j_spring_security_check" >
 			
@@ -70,15 +145,77 @@
 				</button>
 			</span>
 			
-		</form>
+		</form> -->
 		
-	</div>
-	
+ 	
 	<script>
-		
-		$("#j_username").focus();
 	
+
+	//$("#j_username").focus();
+	
+	
+	/**************** SLIDE ALTERNAR LOGIN/CADASTRAR ****************/
+	const signUpButton = document.getElementById('signUp');
+	const signInButton = document.getElementById('signIn');
+	const container = document.getElementById('container');
+
+
+	if(signUpButton){
+	  signUpButton.addEventListener('click', () => {
+		  container.classList.add("right-panel-active");
+		  });
+	}
+
+	if(signInButton){
+	  signInButton.addEventListener('click', () => {
+		  container.classList.remove("right-panel-active");
+		  });
+	}
+	/****************************************************************/
+
+    /**************** ICONE OLHO OCULAR/EXIBIR SENHA ****************/
+	//senha login
+	const toggleLogPassword = document.querySelector("#toggleLogPassword");
+	const logPassword = document.querySelector("#j_password");
+	
+	toggleLogPassword.addEventListener('click', function (e) {
+	    // toggle the type attribute
+	    const type = logPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+	    logPassword.setAttribute('type', type);
+	    // toggle the eye / eye slash icon
+	    this.classList.toggle('bi-eye');
+	});
+	
+	
+	//Senha Confirma Cadastro Login
+	const toggleCadConfPassword = document.querySelector("#toggleCadConfPassword");
+	const cadConfPassword = document.querySelector("#j_newpasswordconf");
+	
+	toggleCadConfPassword.addEventListener('click', function (e) {
+	    // toggle the type attribute
+	    const type = cadConfPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+	    cadConfPassword.setAttribute('type', type);
+	    // toggle the eye / eye slash icon
+	    this.classList.toggle('bi-eye');
+	});
+	
+	
+	//Senha Cadastro Login
+	const toggleCadPassword = document.querySelector("#toggleCadPassword");
+	const cadPassword = document.querySelector("#j_newpassword");
+	
+	toggleCadPassword.addEventListener('click', function (e) {
+	    // toggle the type attribute
+	    const type = cadPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+	    cadPassword.setAttribute('type', type);
+	    // toggle the eye / eye slash icon
+	    this.classList.toggle('bi-eye');
+	});
+	
+	/****************************************************************/
+    
 	</script>
+ 		 
 	
 </h:body>
 </html>
