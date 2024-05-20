@@ -39,14 +39,12 @@
 					<input id="j_newemail" name="j_newemail" type="email" placeholder="Email" />
 				</div>
 				<div id="frmCadPassword" style="width:100%;">
-					<!-- <input id="txtCadPassword" 		type="password" placeholder="Senha" /> -->
-					<input id="j_newpassword" name="j_newpassword" type="password" placeholder="Senha" />
-					<i id="toggleCadConfPassword" class="bi bi-eye-slash" style="padding-top: 42%;"></i>
+					<input id="j_newpassword" name="j_newpassword" type="password" placeholder="Senha" style="padding-right: 13%;" />
+					<i id="toggleCadConfPassword" class="bi bi-eye-slash" style="margin-top: 21%;"></i>
 				</div>
 				<div id="frmCadConfPassword"  style="width:100%;">
-					<!-- <input id="txtCadConfPassword" 	type="password" placeholder="Confirme a senha" /> -->
-					<input id="j_newpasswordconf" name="j_newpasswordconf" type="password" placeholder="Confirme a senha" />
-					<i id="toggleCadPassword" class="bi bi-eye-slash" style="padding-top: 12%;"></i>
+					<input id="j_newpasswordconf" name="j_newpasswordconf" type="password" placeholder="Confirme a senha" style=" padding-right: 13%;" />
+					<i id="toggleCadPassword" class="bi bi-eye-slash" style="margin-top: 7%;"></i>
 				</div>
 
 				<button id="btnCadastrar">Cadastrar</button>
@@ -98,18 +96,38 @@
 		<br/>
 		<h:panelGroup rendered="#{!empty param.login_error}">
 			<h:outputLabel rendered="#{SPRING_SECURITY_LAST_EXCEPTION.message == 'Bad credentials'}">
+				<!-- 
 				<span class="estiloSpan">
 					Permissão Negada, login e/ou senha inválida.
 				</span>
+				 -->
+				<div align="center" >
+					<h5>Permissão Negada, login e/ou senha inválida.</h5>
+				</div>
 			</h:outputLabel>
 			
 			<h:outputLabel rendered="#{SPRING_SECURITY_LAST_EXCEPTION.message == 'Maximum sessions of 1 for this principal exceeded'}">
+				<!-- 
 				<span class="estiloSpan">
 					Você está logado em outra sessão.
 				</span>
+				 -->
+							 
+				<div align="center" >
+					<h5>Você está logado em outra sessão.</h5>
+				</div>
+				<br/>
+				<div align="center" >
+					<button onclick="invalidarSession('#{request.contextPath}','/publico/invalidateSession');" >
+						Encerrar Sessão
+					</button>
+				 </div>
+				
+				<!-- 
 				<h:commandButton value="Encerrar" 
 					style="height: 40px; width: 100px; background:#CDCDC1; border:1px;" 
 					onclick="invalidarSession('#{request.contextPath}','/publico/invalidateSession');" />
+				 -->	
 			</h:outputLabel>
 			
 		</h:panelGroup>
@@ -186,20 +204,6 @@
 	    this.classList.toggle('bi-eye');
 	});
 	
-	
-	//Senha Confirma Cadastro Login
-	const toggleCadConfPassword = document.querySelector("#toggleCadConfPassword");
-	const cadConfPassword = document.querySelector("#j_newpasswordconf");
-	
-	toggleCadConfPassword.addEventListener('click', function (e) {
-	    // toggle the type attribute
-	    const type = cadConfPassword.getAttribute('type') === 'password' ? 'text' : 'password';
-	    cadConfPassword.setAttribute('type', type);
-	    // toggle the eye / eye slash icon
-	    this.classList.toggle('bi-eye');
-	});
-	
-	
 	//Senha Cadastro Login
 	const toggleCadPassword = document.querySelector("#toggleCadPassword");
 	const cadPassword = document.querySelector("#j_newpassword");
@@ -208,6 +212,18 @@
 	    // toggle the type attribute
 	    const type = cadPassword.getAttribute('type') === 'password' ? 'text' : 'password';
 	    cadPassword.setAttribute('type', type);
+	    // toggle the eye / eye slash icon
+	    this.classList.toggle('bi-eye');
+	});
+
+	//Senha Confirma Cadastro Login
+	const toggleCadConfPassword = document.querySelector("#toggleCadConfPassword");
+	const cadConfPassword = document.querySelector("#j_newpasswordconf");
+	
+	toggleCadConfPassword.addEventListener('click', function (e) {
+	    // toggle the type attribute
+	    const type = cadConfPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+	    cadConfPassword.setAttribute('type', type);
 	    // toggle the eye / eye slash icon
 	    this.classList.toggle('bi-eye');
 	});
