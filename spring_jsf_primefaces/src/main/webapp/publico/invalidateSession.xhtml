@@ -48,17 +48,24 @@
 			modal="true" closable="false">
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputLabel for="username" value="Login:" />
-				<p:inputText id="username" value="#{loginBeanView.username}"
-					required="true" label="username" requiredMessage="Informe o login." />
+				<p:inputText id="username" 
+					value="#{loginBeanView.username}"
+					required="true" 
+					label="username" 
+					requiredMessage="Informe o login." />
 
 				<h:outputLabel for="password" value="Senha:" />
-				<p:password id="password" value="#{loginBeanView.password}"
-					required="true" label="password" requiredMessage="Informe a senha." />
+				<p:password id="password" 
+					value="#{loginBeanView.password}"
+					required="true" 
+					label="password" 
+					requiredMessage="Informe a senha." />
 
 				<f:facet name="footer">
 					<p:commandButton value="Encerrar"
 						style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF;"
-						update="form:msg" actionListener="#{loginBeanView.invalidar}"
+						update="form:msg" 
+						actionListener="#{loginBeanView.invalidar}"
 						oncomplete="handleLoginRequest(xhr, status, args)" ajax="true" />
 				</f:facet>
 			</h:panelGrid>
@@ -74,6 +81,7 @@
 		});
 
 		function handleLoginRequest(xhr, status, args) {
+			
 			if (!args.loggedIn) {
 				//alert('encerrar sessao negada e aplicar efeito');
 				PF('dlg').jq.effect("shake", {
@@ -81,7 +89,8 @@
 				}, 100);
 			} else {
 				PF('dlg').hide();
-				logout('#{request.contextPath}');
+				document.location = '#{request.contextPath}' + "j_spring_security_logout";
+				//logout('#{request.contextPath}');
 			}
 		}
 	</script>
