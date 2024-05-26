@@ -31,18 +31,7 @@
 	
 	<h:form id="formTemplate" prependId="false" >
 		
-		<h:outputStylesheet name="header/bootstrap.min.css" library="css" />
-		<h:outputStylesheet name="header/chartlist-custom.css" library="css" />
-		<h:outputStylesheet name="header/font-awesome.min.css" library="css" />
-		<h:outputStylesheet name="header/main.css" library="css" />
-		<h:outputStylesheet name="header/style.css" library="css" />
-		<h:outputStylesheet name="header/fonts-googleapi-family-source-sans-pro.css" library="css" />
-		
-		
-		<h:outputStylesheet name="icon/apple-icon.png" library="img" />
-		<h:outputStylesheet name="icon/favicon.png" library="img" />
-		
-		<h:outputStylesheet name="estilo.css" library="css" id="cssStileSistema" />
+		<h:outputStylesheet name="estilo.css" library="css" id="cssStiloSistema" />
 		
 		<h:body>
 			<script type="text/javascript" charset="UTF-8">
@@ -65,6 +54,18 @@
 			
 			<div id="container">
 				
+				<div id="topo">
+					<span style="position: absolute; left: 20px; top: 14px;" id="spanLogo">
+						<h:graphicImage library="img" name="logo.png" id="logoImg" styleClass="bordaImagem" />
+					</span>
+					<span id="dadoslogin">Usuário: #{entidadeBeanView.usuarioLogadoSecurity}
+						<br id="quebraUser" />
+						Último login:
+						<h:outputLabel value="#{entidadeBeanView.ultimoAcesso}" id="saidaUltimoAcesso" >
+							
+						</h:outputLabel>
+					</span>
+				</div>
 			
 			</div>
 			
