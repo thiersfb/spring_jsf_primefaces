@@ -23,16 +23,27 @@ function validaDescricao(descricao) {
 }
 
 
-// invalida a sess�o do spring security
+// invalida a sessão do spring security
 function logout(contextPath) {
 	
+	var post = 'invalidar_session';
+	$.ajax({ 
+		  type: "POST", 
+		  url: post
+		}).always(function(resposta){
+			document.location =	 contextPath + '/j_spring_security_logout';
+	
+		});
+	
+	
+	/*
 	document.location =	 contextPath + '/j_spring_security_logout';
 	var post = 'invalidar_session';
-	$.ajax(
-		{ 
+	$.ajax({ 
 		  type: "POST", 
 		  url: post
 		});
+		*/
 }
 
 /**
