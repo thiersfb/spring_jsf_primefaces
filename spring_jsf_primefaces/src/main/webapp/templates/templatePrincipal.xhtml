@@ -3,7 +3,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:sec="https://www.springframework.org/security/facelets/tags"
 	xmlns:p="http://primefaces.org/ui">
 
 <sec:isAuthenticated>
@@ -74,22 +74,44 @@
 					</span>
 				</div>
 				
+				<div id="menu">
+					<span id="iniciarmenu">
+						<h:graphicImage library="img" name="iconemenu.png" styleClass="bordaimagem" id="iconemenu">
+							Menu
+						</h:graphicImage>
+					</span>
+				</div>
+				
 				<div id="corpo" class="corpo">
 					<ui:insert name="corpo" />
 				</div>
 				
 				<div id="menupop">
-					menu saída teste
+					
+					<sec:ifAnyGranted roles="MENSAGENS_ENVIAR_ACESSAR, ADMIN">
+						<p:commandLink actionListener="#{mensagemBeanView.novo}" value="Enviar mensagem" immediate="true" 
+										onsuccess="enviarMsgDialog.show();"
+										style="display: block;" id="enviarMensagem" ajax="true" process="@this">
+							<p:ajax immediate="true" listener="#{mensagemBeanView.novo}" />
+						</p:commandLink>
+					</sec:ifAnyGranted>
+					
+					<a href="#" onclick="alterarSenhaDialog.show();" style="display: block;" id="alterarSenha">
+						<span style="display: block;" id="spanAlterarSenha">Alterar Senha</span>
+					</a>
+					
 				</div>
 			</div>
 			
-			<div id="menu">
-				<span id="iniciarmenu">
-					<h:graphicImage library="img" name="iconemenu.png" styleClass="bordaimagem" id="iconemenu">
-						Menu
-					</h:graphicImage>
-				</span>
-			</div>
+			<p:dialog widgetVar="enviarMsgDialog" id="alterarMsgDialog" width="800" height="360"
+						modal="true" resizable="false" header="Enviar menssagem" appendToBody="false" dynamic="true">
+				<!-- <ui:include src="/cadastro/dialog_enviar_msg.xhtml"/> -->
+			</p:dialog>
+			
+			<p:dialog widgetVar="alterarSenhaDialog" id="alterarSenhaDialog" width="270" height="120" 
+						modal="true" resizable="false" header="Alterar Senha" dynamic="true" appendToBody="false">
+				corpo
+			</p:dialog>
 			
 			<script>
 				//fecharMenupop();
