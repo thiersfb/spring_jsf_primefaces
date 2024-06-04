@@ -35,6 +35,9 @@
 		<h:body>
 			<script type="text/javascript" charset="UTF-8">
 				$.noConflict();
+				localeData_pt_br();
+				ocultarMenu();
+				initTamplete();
 				
 				/* Bloqueia Refresh F5 do teclado*/
 				$(document).keydown(function(e) {
@@ -119,15 +122,13 @@
 				corpo
 			</p:dialog>
 			
-			<script>
-				//fecharMenupop();
-				$('#menupop').hide();
-			</script>
-			
 		</h:body>
 	
 	</h:form>
 	
+	<script type="text/javascript" charset="UTF-8">
+		carregarIdElementosPagina();
+	</script>
 
 </sec:isAuthenticated>
 
