@@ -3,7 +3,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:sec="https://www.springframework.org/security/facelets/tags"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
 	xmlns:p="http://primefaces.org/ui">
 
 <sec:isAuthenticated>
@@ -105,6 +105,18 @@
 				
 				<div id="barramenu">
 					<p:tieredMenu id="menuEsquerdo" style="width: 185px; border: none; background: none; color: #000;" >
+						
+						<sec:ifAnyGranted roles="CADASTRO_ACESSAR, ADMIN">
+							<p:submenu label="Cadastros" id="subMenuCadastro">
+								<sec:ifAnyGranted roles="CIDADE_ACESSAR, ADMIN">
+									<p:menuitem value="Cidade" id="menuCidade" action="/cadastro/cad_cidade.jsf?faces-redirect=true">
+										
+									
+									</p:menuitem>
+								</sec:ifAnyGranted>
+							</p:submenu>
+						</sec:ifAnyGranted>
+						
 						<p:menuitem onclick="redirecionarPagina('#{request.contextPath}', '/restrito/principal');" value="Início" id="menuinicio" ajax="true" />
 						<p:menuitem onclick="javascript:logout('#{request.contextPath}');" value="Sair" id="menusair" ajax="true" />
 					</p:tieredMenu>
