@@ -19,7 +19,7 @@ public class EstadoController extends ImplementacaoCrud<Estado> implements Inter
 	public List<SelectItem> getListEstado() throws Exception {
 		List<SelectItem> list = new ArrayList<SelectItem>();
 
-		List<Estado> estados = super.findListByDynamicQuery(" from Estado ");
+		List<Estado> estados = super.findListByDynamicQuery(" from Estado order by est_nome");
 
 		for (Estado estado : estados) {
 			list.add(new SelectItem(estado, estado.getEst_nome()));
