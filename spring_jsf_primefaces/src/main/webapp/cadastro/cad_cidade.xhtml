@@ -36,16 +36,35 @@
 								 	
 									<h:panelGrid id="gridCidade" columns="3">
 										<!-- <h:outputLabel for="id" value="Código: " id="labelId" /> -->
-										<h:outputText for="id" value="Código: " id="labelId" />
+										<h:outputText for="id" value="Código" id="labelId" />
 										<p:inputText id="id" styleClass="form-control" disabled="true" value="#{cidadeBeanView.objetoSelecionado.cid_codigo}" />
 										<h:outputLabel />
 										
 										
 										<!-- <h:outputLabel for="id" value="Código: " id="labelId" /> -->
-										<h:outputText for="cidadeNome" value="Nome *: " id="labelNomeConsultaCidade" />
-										<p:inputText id="cidadeNome" value="#{cidadeBeanView.objetoSelecionado.cid_descricao}" styleClass="form-control" required="true" maxlength="100" requiredMessage="Informe o nome da cidade" />
+										<h:outputText for="cidadeNome" value="Nome" id="labelNomeConsultaCidade" />
+										<p:inputText id="cidadeNome" value="#{cidadeBeanView.objetoSelecionado.cid_descricao}" 
+														styleClass="form-control" 
+														required="true" 
+														maxlength="100" 
+														requiredMessage="Informe o nome da cidade" />
 										<p:message for="cidadeNome" />
 										
+										<h:outputText for="estado" value="Estado" id="labelEstado" />
+										<p:selectOneButton>
+											<f:selectItems value="#{estadoBeanView.estados}" />
+										</p:selectOneButton>
+										<!-- 
+										<select class="form-control">
+											<option value="cheese">Cheese</option>
+											<option value="tomatoes">Tomatoes</option>
+											<option value="mozarella">Mozzarella</option>
+											<option value="mushrooms">Mushrooms</option>
+											<option value="pepperoni">Pepperoni</option>
+											<option value="onions">Onions</option>
+										</select>
+										 -->
+										<h:outputLabel />
 										
 										
 									</h:panelGrid>
