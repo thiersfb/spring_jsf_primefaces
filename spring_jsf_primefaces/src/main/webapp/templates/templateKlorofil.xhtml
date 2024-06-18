@@ -38,11 +38,18 @@
 		<style>
 		
 			.ui-growl {
-			position: fixed;
-			top: 10%;
-			right: 5px;
-			width: 301px;
-		}
+				position: fixed;
+				top: 12%;
+				right: 5px;
+				width: 301px;
+			}
+		
+			.ui-selectonemenu{
+			     width: 100% !important;
+			}
+			.ui-selectonemenu-label{
+			     width: 100% !important;
+			} 
 		
 		</style>
 
@@ -122,10 +129,12 @@
 										</h:outputText>
 									</a>
 								</li>
-								<li class="dropdown"><a href="#" class="dropdown-toggle"
-									data-toggle="dropdown"> <!-- <span>Samuel</span> --> <span>#{entidadeBeanView.usuarioLogadoSecurity}</span>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+										<!-- <span>Samuel</span> --> 
+										<span>#{entidadeBeanView.usuarioLogadoSecurity}</span>
 										<i class="icon-submenu lnr lnr-chevron-down" />
-								</a>
+									</a>
 									<ul class="dropdown-menu">
 										<sec:ifAnyGranted roles="MENSAGENS_ENVIAR_ACESSAR, ADMIN">
 											<li><p:commandLink
@@ -149,8 +158,8 @@
 												<i class="lnr lnr-exit"></i>
 												<span>Sair</span>
 											</p:commandLink></li>
-									</ul></li>
-								
+									</ul>
+								</li>
 							</ul>
 						</div>
 					</div>

@@ -34,31 +34,39 @@
 								<p:panel header="  " id="panelCadastro">
 								
 								 	
-									<h:panelGrid id="gridCidade" columns="3">
-										<!-- <h:outputLabel for="id" value="Código: " id="labelId" /> -->
+									<h:panelGrid id="gridCidade" columns="3" style="width:30%;">
+										
 										<h:outputText for="id" value="Código " id="labelId" />
-										<p:inputText id="id" styleClass="form-control" disabled="true" value="#{cidadeBeanView.objetoSelecionado.cid_codigo}" />
+										<!-- <p:inputText id="id" styleClass="form-control" disabled="true" value="#{cidadeBeanView.objetoSelecionado.cid_codigo}" /> -->
+										<h:inputText id="id" styleClass="form-control" disabled="true" value="#{cidadeBeanView.objetoSelecionado.cid_codigo}" />
 										<h:outputLabel />
 										
-										
-										<!-- <h:outputLabel for="id" value="Código: " id="labelId" /> -->
 										<h:outputText for="cidadeNome" value="Nome " id="labelNomeConsultaCidade" />
-										<p:inputText id="cidadeNome" value="#{cidadeBeanView.objetoSelecionado.cid_descricao}" 
-														styleClass="form-control" 
-														required="true" 
-														maxlength="100" 
-														requiredMessage="Informe o nome da cidade" />
+										<!-- <p:inputText id="cidadeNome" value="#{cidadeBeanView.objetoSelecionado.cid_descricao}" styleClass="form-control" required="true" maxlength="100" requiredMessage="Informe o nome da cidade" /> -->
+										<h:inputText id="cidadeNome" value="#{cidadeBeanView.objetoSelecionado.cid_descricao}" styleClass="form-control" required="true" maxlength="100" requiredMessage="Informe o nome da cidade" />
 										<p:message for="cidadeNome" />
 										
 										<h:outputText for="estado" value="Estado " id="labelEstado" />
-										
+										<!-- 
 										<p:selectOneMenu id="estado" required="true" 
-														style="width:250px;" 
+														style="width:250px;"
 														requiredMessage="Informe o estado."
 														value="#{cidadeBeanView.objetoSelecionado.estado}">
 											<f:selectItems value="#{estadoBeanView.estados}" />
 										</p:selectOneMenu>
-									
+										 -->
+										 
+										 <!-- styleClass="ui-inputfield ui-widget ui-state-default ui-corner-all #{component.valid ? '' : 'ui-state-error'}" -->
+										 <h:selectOneMenu id="estado" required="true"
+														requiredMessage="Informe o estado."
+														value="#{cidadeBeanView.objetoSelecionado.estado}"
+														styleClass="form-control"
+														onmouseover="$(this).addClass('ui-state-active')"
+														onmouseout="$(this).removeClass('ui-state-active')"
+														onfocus="$(this).addClass('ui-state-active ui-state-focus')"
+														onblur="$(this).removeClass('ui-state-active ui-state-focus')">
+											  <f:selectItems value="#{estadoBeanView.estados}" />
+										  </h:selectOneMenu>
 										<p:message for="estado" />
 										
 									</h:panelGrid>
@@ -66,7 +74,7 @@
 								
 								<br/>
 								
-								<p:commandButton value="Novo" ajax="false" action="#{cidadeBeanView.novo}" />
+								<p:commandButton value="Novo" ajax="false" action="#{cidadeBeanView.novo}" immediate="true" />
 								<p:commandButton value="Salvar" ajax="false" action="#{cidadeBeanView.save}" />
 								
 								<br/>
@@ -74,6 +82,14 @@
 								</h:form>
 								
 								<br/>
+								
+								<script type="text/javascript" charset="UTF-8">
+									
+									addFocoAoCampo("cidadeNome");
+									gerenciaTeclaEnder();
+									
+								</script>
+								
 								<p:dataTable id="tableResult" value="#{cidadeBeanView.list}" var="objeto"
 											emptyMessage="Não há dados a serem exibidos.">
 									<p:column>

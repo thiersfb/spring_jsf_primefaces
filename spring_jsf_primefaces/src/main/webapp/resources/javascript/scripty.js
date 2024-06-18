@@ -278,7 +278,8 @@ function getValorElementPorIdJQuery(id) {
  */
 function addFocoAoCampo(campo) {
 	var id = getValorElementPorId(campo);
-	if (id != idundefined) {
+	//if (id != idundefined) {
+	if (id != undefined) {
 		document.getElementById(getValorElementPorId(id)).focus();
 	}
 }
