@@ -1,5 +1,8 @@
 package br.com.project.bean.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +24,15 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	private Cidade objetoSelecionado = new Cidade(); 
 	
+	private List<Cidade> list = new ArrayList<Cidade>();
+
 	@Autowired
 	private CidadeController cidadeController;
+	
+	public List<Cidade> getList() throws Exception {
+		list = cidadeController.findList(Cidade.class);
+		return list;
+	}
 	
 	public String save() throws Exception {
 		
@@ -37,6 +47,18 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 		
 		//return super.novo();
 		return url;
+	}
+	
+	@Override
+	public String editar() throws Exception {
+		return url;
+	}
+	
+	@Override
+	public void excluir() throws Exception {
+		cidadeController.delete(objetoSelecionado);
+		
+		novo();
 	}
 	
 	public Cidade getObjetoSelecionado() {
