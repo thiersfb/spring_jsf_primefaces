@@ -33,7 +33,6 @@
 									<c:set var="isCadastro" value="true" scope="view" />
 								<p:panel header="  " id="panelCadastro">
 								
-								 	
 									<h:panelGrid id="gridCidade" columns="3" style="width:30%;">
 										
 										<h:outputText for="id" value="Código " id="labelId" />
@@ -91,49 +90,15 @@
 								</script>
 								
 								<p:dataTable id="tableResult" value="#{cidadeBeanView.list}" var="objeto"
+											rendered="#{cidadeBeanView.list.size() > 0 }"
+											rows="5"
+											lazy="true"
+											paginator="true"
+											paginatorPosition="bottom"
+											paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 											emptyMessage="Não há dados a serem exibidos.">
-									<p:column>
-										<center>
-											<f:facet name="header">Código</f:facet>
-											<h:outputText value="#{objeto.cid_codigo}" />
-										</center>
-									</p:column>
 									
-									<p:column>
-										<center>
-											<f:facet name="header">Nome</f:facet>
-											<h:outputText value="#{objeto.cid_descricao}" />
-										</center>
-									</p:column>
-									
-									<p:column>
-										<center>
-											<f:facet name="header">Estado</f:facet>
-											<h:outputText value="#{objeto.estado.est_nome}" />
-										</center>
-									</p:column>
-									
-									
-									<p:column>
-										<center>
-											<f:facet name="header">Editar</f:facet>
-											<p:commandLink action="#{cidadeBeanView.editar}" id="editarCidade" update="@form:formCadastro"
-												value="Editar" ajax="false" immediate="true" >
-												<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}" />
-											</p:commandLink>
-										</center>
-									</p:column>
-									
-									
-									<p:column>
-										<center>
-											<f:facet name="header">Excluir</f:facet>
-											<p:commandLink action="#{cidadeBeanView.excluir}" id="excluirCidade" update="tableResult"
-												value="Excluir" ajax="false" immediate="true" >
-												<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}" />
-											</p:commandLink>
-										</center>
-									</p:column>
+									<ui:include src="/resources/components/colunasDataTableCidade.xhtml" />
 									
 								</p:dataTable>
 								
