@@ -3,8 +3,9 @@ package br.com.project.util.all;
 public enum EstatusPersistencia {
 	
 	ERRO("Erro"), 
-	SUCESSO("Sucesso"),
-	OBJETO_REFERENCIADO("Ësse objecto não pode ser apagado por possuir referências ao mesmo");
+	//SUCESSO("Sucesso"),
+	SUCESSO("Operação realizada com Sucesso"),
+	OBJETO_REFERENCIADO("Esse objecto não pode ser apagado por possuir referências ao mesmo");
 	
 	private String name;
 	

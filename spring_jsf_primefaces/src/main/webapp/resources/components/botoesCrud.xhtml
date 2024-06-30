@@ -14,14 +14,14 @@
 	<composite:interface name="botoesCrud">
 		<composite:attribute name="managedBeanView" required="true" />
 		<composite:attribute name="botaoNovo" required="false" default="true" />
-		<composite:attribute name="camposReload" required="false" />
 		<composite:attribute name="botaoSalvar" required="false" default="true" />
+		<composite:attribute name="camposReload" required="false" />
 	</composite:interface>
 	
 	<!-- cc.attrs.xxxx -> Expression Language padrão específica do composite, referenciando o atributo name do componente  -->
 	<composite:implementation>
 		<p:commandButton 
-			styleClass="btn btn-default btn-sm" 
+			styleClass="btn btn-primary btn-sm" 
 			icon="fa fa-plus" 
 			id="btnNovo"
 			value="Novo" 
@@ -31,14 +31,18 @@
 			ajax="false" immediate="true" >
 		</p:commandButton>
 		
+		<!-- actionListener executa uma ação no servidor sem redirecionar -->
 		<p:commandButton 
-			styleClass="btn btn-default btn-sm" 
+			styleClass="btn btn-success btn-sm" 
 			icon="fa fa-check" 
 			id="btnSave"
 			value="Salvar" 
 			rendered="#{cc.attrs.botaoSalvar}"
-			action="#{cc.attrs.managedBeanView.save}" 
-			ajax="false"  >
+			actionListener="#{cc.attrs.managedBeanView.saveNotReturn}" 
+			ajax="false" immediate="false"
+			partialSubmit="true"
+			process="@this, @form"
+			update="#{cc.attrs.camposReload}" >
 		</p:commandButton>
 		
 		
