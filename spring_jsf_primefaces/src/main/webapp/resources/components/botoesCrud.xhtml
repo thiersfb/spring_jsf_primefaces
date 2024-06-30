@@ -14,23 +14,25 @@
 	<composite:interface name="botoesCrud">
 		<composite:attribute name="managedBeanView" required="true" />
 		<composite:attribute name="botaoNovo" required="false" default="true" />
+		<composite:attribute name="camposReload" required="false" />
 		<composite:attribute name="botaoSalvar" required="false" default="true" />
 	</composite:interface>
 	
 	<!-- cc.attrs.xxxx -> Expression Language padrão específica do composite, referenciando o atributo name do componente  -->
 	<composite:implementation>
 		<p:commandButton 
-			styleClass="btn btn-default" 
+			styleClass="btn btn-default btn-sm" 
 			icon="fa fa-plus" 
 			id="btnNovo"
 			value="Novo" 
 			rendered="#{cc.attrs.botaoNovo}"
 			action="#{cc.attrs.managedBeanView.novo}" 
+			update="#{cc.attrs.camposReload}"
 			ajax="false" immediate="true" >
 		</p:commandButton>
 		
 		<p:commandButton 
-			styleClass="btn btn-default" 
+			styleClass="btn btn-default btn-sm" 
 			icon="fa fa-check" 
 			id="btnSave"
 			value="Salvar" 
