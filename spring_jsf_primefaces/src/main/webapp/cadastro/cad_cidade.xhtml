@@ -31,52 +31,59 @@
 								<h:form id="formCadastro" prependId="false">
 									<!-- define variável -->
 									<c:set var="isCadastro" value="true" scope="view" />
-								<p:panel header="  " id="panelCadastro">
+									<p:panel header="  " id="panelCadastro">
+									
+										<!-- <h:panelGrid id="gridCidade" columns="3" style="width:30%;"> -->
+										<h:panelGrid id="gridCidade" columns="3">
+											
+											<h:outputText for="id" value="Código" id="labelId" />
+											<!-- <p:inputText id="id" styleClass="form-control" disabled="true" value="#{cidadeBeanView.objetoSelecionado.cid_codigo}" /> -->
+											<h:inputText id="id" styleClass="form-control" disabled="true" value="#{cidadeBeanView.objetoSelecionado.cid_codigo}" />
+											<h:outputLabel />
+											
+											<h:outputText for="cidadeNome" value="Nome " id="labelNomeConsultaCidade" />
+											<!-- <p:inputText id="cidadeNome" value="#{cidadeBeanView.objetoSelecionado.cid_descricao}" styleClass="form-control" required="true" maxlength="100" requiredMessage="Informe o nome da cidade" /> -->
+											<h:inputText id="cidadeNome" value="#{cidadeBeanView.objetoSelecionado.cid_descricao}" styleClass="form-control" required="true" maxlength="100" requiredMessage="Informe o nome da cidade" />
+											<p:message for="cidadeNome" />
+											
+											<h:outputText for="estado" value="Estado " id="labelEstado" />
+											<!-- 
+											<p:selectOneMenu id="estado" required="true" 
+															style="width:250px;"
+															requiredMessage="Informe o estado."
+															value="#{cidadeBeanView.objetoSelecionado.estado}">
+												<f:selectItems value="#{estadoBeanView.estados}" />
+											</p:selectOneMenu>
+											 -->
+											 
+											 <!-- styleClass="ui-inputfield ui-widget ui-state-default ui-corner-all #{component.valid ? '' : 'ui-state-error'}" -->
+											 <h:selectOneMenu id="estado" required="true"
+															requiredMessage="Informe o estado."
+															value="#{cidadeBeanView.objetoSelecionado.estado}"
+															styleClass="form-control"
+															onmouseover="$(this).addClass('ui-state-active')"
+															onmouseout="$(this).removeClass('ui-state-active')"
+															onfocus="$(this).addClass('ui-state-active ui-state-focus')"
+															onblur="$(this).removeClass('ui-state-active ui-state-focus')">
+												  <f:selectItems value="#{estadoBeanView.estados}" />
+											  </h:selectOneMenu>
+											<p:message for="estado" />
+											
+										</h:panelGrid>
+									</p:panel>
 								
-									<h:panelGrid id="gridCidade" columns="3" style="width:30%;">
-										
-										<h:outputText for="id" value="Código " id="labelId" />
-										<!-- <p:inputText id="id" styleClass="form-control" disabled="true" value="#{cidadeBeanView.objetoSelecionado.cid_codigo}" /> -->
-										<h:inputText id="id" styleClass="form-control" disabled="true" value="#{cidadeBeanView.objetoSelecionado.cid_codigo}" />
-										<h:outputLabel />
-										
-										<h:outputText for="cidadeNome" value="Nome " id="labelNomeConsultaCidade" />
-										<!-- <p:inputText id="cidadeNome" value="#{cidadeBeanView.objetoSelecionado.cid_descricao}" styleClass="form-control" required="true" maxlength="100" requiredMessage="Informe o nome da cidade" /> -->
-										<h:inputText id="cidadeNome" value="#{cidadeBeanView.objetoSelecionado.cid_descricao}" styleClass="form-control" required="true" maxlength="100" requiredMessage="Informe o nome da cidade" />
-										<p:message for="cidadeNome" />
-										
-										<h:outputText for="estado" value="Estado " id="labelEstado" />
-										<!-- 
-										<p:selectOneMenu id="estado" required="true" 
-														style="width:250px;"
-														requiredMessage="Informe o estado."
-														value="#{cidadeBeanView.objetoSelecionado.estado}">
-											<f:selectItems value="#{estadoBeanView.estados}" />
-										</p:selectOneMenu>
-										 -->
-										 
-										 <!-- styleClass="ui-inputfield ui-widget ui-state-default ui-corner-all #{component.valid ? '' : 'ui-state-error'}" -->
-										 <h:selectOneMenu id="estado" required="true"
-														requiredMessage="Informe o estado."
-														value="#{cidadeBeanView.objetoSelecionado.estado}"
-														styleClass="form-control"
-														onmouseover="$(this).addClass('ui-state-active')"
-														onmouseout="$(this).removeClass('ui-state-active')"
-														onfocus="$(this).addClass('ui-state-active ui-state-focus')"
-														onblur="$(this).removeClass('ui-state-active ui-state-focus')">
-											  <f:selectItems value="#{estadoBeanView.estados}" />
-										  </h:selectOneMenu>
-										<p:message for="estado" />
-										
-									</h:panelGrid>
-								</p:panel>
-								
-								<br/>
-								
-								<p:commandButton value="Novo" ajax="false" action="#{cidadeBeanView.novo}" immediate="true" />
-								<p:commandButton value="Salvar" ajax="false" action="#{cidadeBeanView.save}" />
-								
-								<br/>
+									<br/>
+									<!-- 
+									<p:commandButton value="Novo" ajax="false" action="#{cidadeBeanView.novo}" immediate="true" />
+									<p:commandButton value="Salvar" ajax="false" action="#{cidadeBeanView.save}" />
+									 -->
+									
+									<util:botoesCrud managedBeanView="#{cidadeBeanView}">
+									
+									</util:botoesCrud>
+									
+									
+									<br/>
 								
 								</h:form>
 								
@@ -95,13 +102,13 @@
 											lazy="true"
 											paginator="true"
 											paginatorPosition="bottom"
-											paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+											paginatorTemplate="{PageLinks} {RowsPerPageDropdown}"
 											emptyMessage="Não há dados a serem exibidos.">
 									
 									<ui:include src="/resources/components/colunasDataTableCidade.xhtml" />
 									
 								</p:dataTable>
-								
+								<!-- paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" -->
 								
 							</div>
 						</div>

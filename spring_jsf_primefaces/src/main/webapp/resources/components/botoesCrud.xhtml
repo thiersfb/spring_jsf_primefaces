@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:util="http://java.sun.com/jsf/composite/components"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
+	
+	<composite:interface name="botoesCrud">
+		<composite:attribute name="managedBeanView" required="true" />
+		<composite:attribute name="botaoNovo" required="false" default="true" />
+		<composite:attribute name="botaoSalvar" required="false" default="true" />
+	</composite:interface>
+	
+	<!-- cc.attrs.xxxx -> Expression Language padrão específica do composite, referenciando o atributo name do componente  -->
+	<composite:implementation>
+		<p:commandButton 
+			styleClass="btn btn-default" 
+			icon="fa fa-plus" 
+			id="btnNovo"
+			value="Novo" 
+			rendered="#{cc.attrs.botaoNovo}"
+			action="#{cc.attrs.managedBeanView.novo}" 
+			ajax="false" immediate="true" >
+		</p:commandButton>
+		
+		<p:commandButton 
+			styleClass="btn btn-default" 
+			icon="fa fa-check" 
+			id="btnSave"
+			value="Salvar" 
+			rendered="#{cc.attrs.botaoSalvar}"
+			action="#{cc.attrs.managedBeanView.save}" 
+			ajax="false"  >
+		</p:commandButton>
+		
+		
+	</composite:implementation>
+	
+</html>
