@@ -41,7 +41,7 @@
 				position: fixed;
 				top: 12%;
 				right: 5px;
-				width: 301px;
+				width: 310px;
 			}
 		
 			.ui-selectonemenu{
@@ -176,25 +176,41 @@
 							<nav>
 							<ul class="nav">
 
-								<li><a href="#" class=""
-									onclick="redirecionarPagina('#{request.contextPath}', '/restrito/principal');"
-									ajax="true"><i class="lnr lnr-home"></i> <span>Início</span></a></li>
+								<li>
+									<a href="#" class=""
+										onclick="redirecionarPagina('#{request.contextPath}', '/restrito/principal');"
+										ajax="true">
+										<i class="lnr lnr-home"></i> 
+										<span>Início</span>
+									</a> 
+								
+								</li>
 								<sec:ifAnyGranted roles="CADASTRO_ACESSAR, ADMIN">
-									<li><a href="#subPagesCadastros" data-toggle="collapse"
-										class="collapsed"> <!-- <i class="lnr lnr-file-empty"></i>  -->
-											<i class="lnr lnr-menu"></i> <span>Cadastros</span> <i
-											class="icon-submenu lnr lnr-chevron-left"></i>
-									</a> <sec:ifAnyGranted roles="CIDADE_ACESSAR, ADMIN">
+									<li>
+										<a href="#subPagesCadastros" data-toggle="collapse"
+											class="collapsed"> 
+											<!-- <i class="lnr lnr-file-empty"></i>  -->
+											<i class="lnr lnr-menu"></i> 
+											<span>Cadastros</span> 
+											<i class="icon-submenu lnr lnr-chevron-left"></i>
+										</a> 
+										<sec:ifAnyGranted roles="CIDADE_ACESSAR, ADMIN">
 											<div id="subPagesCadastros" class="collapse ">
 												<ul class="nav">
 													<li><h:link value="Cidade" outcome="/cadastro/cad_cidade.jsf?faces-redirect=true" /></li>
 												</ul>
 											</div>
-										</sec:ifAnyGranted></li>
+										</sec:ifAnyGranted>
+									</li>
 								</sec:ifAnyGranted>
-								<li><a href="#" class=""
-									onclick="javascript:logout('#{request.contextPath}')"
-									ajax="true"><i class="lnr lnr-exit"></i> <span>Sair</span></a></li>
+								<li>
+									<a href="#" class=""
+										onclick="javascript:logout('#{request.contextPath}')"
+										ajax="true">
+										<i class="lnr lnr-exit"></i> 
+										<span>Sair</span>
+									</a>
+								</li>
 							</ul>
 							</nav>
 						</div>

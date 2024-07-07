@@ -16,6 +16,7 @@
 		<composite:attribute name="botaoNovo" required="false" default="true" />
 		<composite:attribute name="botaoSalvar" required="false" default="true" />
 		<composite:attribute name="botaoAtualizar" required="false" default="true" />
+		<composite:attribute name="botaoExcluir" required="false" default="true" />
 		<composite:attribute name="camposReload" required="false" />
 	</composite:interface>
 	
@@ -60,6 +61,18 @@
 		</p:commandButton>
 		
 		
+		<p:commandButton 
+			styleClass="btn btn-danger btn-sm" 
+			icon="fa fa-trash" 
+			id="btnExcluir"
+			value="Excluir" 
+			rendered="#{cc.attrs.botaoExcluir}"
+			actionListener="#{cc.attrs.managedBeanView.excluir}" 
+			ajax="false" immediate="false"
+			partialSubmit="true"
+			process="@this, @form"
+			update="#{cc.attrs.camposReload}" >
+		</p:commandButton>
 		
 	</composite:implementation>
 	
