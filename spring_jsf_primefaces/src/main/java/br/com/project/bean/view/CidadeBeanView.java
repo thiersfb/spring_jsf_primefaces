@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.geral.controller.CidadeController;
 import br.com.project.model.classes.Cidade;
@@ -21,6 +22,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	private static final long serialVersionUID = 1L;
 	
 	private String url = "/cadastro/cad_cidade.jsf?faces-redirect=true";
+	private String urlFind = "/cadastro/find_cidade.jsf?faces-redirect=true";
 	
 	private Cidade objetoSelecionado = new Cidade(); 
 	
@@ -30,7 +32,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	private CidadeController cidadeController;
 	
 	public List<Cidade> getList() throws Exception {
-		list = cidadeController.findList(Cidade.class);
+		list = cidadeController.findList(getClassImplement());
 		return list;
 	}
 	
@@ -57,10 +59,16 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public String novo() throws Exception {
-		objetoSelecionado = new Cidade();
-		
+		//objetoSelecionado = new Cidade();
+		setarVariaveisNulas();
 		//return super.novo();
 		return url;
+	}
+	
+	//@Override
+	public void setarVariaveisNulas() throws Exception {
+		list.clear();
+		objetoSelecionado = new Cidade();
 	}
 	
 	@Override
@@ -71,7 +79,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void excluir() throws Exception {
-		objetoSelecionado = (Cidade) cidadeController.getSession().get(Cidade.class, objetoSelecionado.getCid_codigo());
+		objetoSelecionado = (Cidade) cidadeController.getSession().get(getClassImplement(), objetoSelecionado.getCid_codigo());
 		cidadeController.delete(objetoSelecionado);
 		list.remove(objetoSelecionado);
 		novo();
@@ -85,7 +93,22 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	public void setObjetoSelecionado(Cidade objetoSelecionado) {
 		this.objetoSelecionado = objetoSelecionado;
 	}
+
+	@Override
+	protected Class<Cidade> getClassImplement() {
+		return Cidade.class;
+	}
 	
-	
+	@Override
+	public String redirecionarLocalizaEntidade() throws Exception {
+		setarVariaveisNulas();
+		return urlFind;
+		//return super.redirecionarLocalizaEntidade();
+	}
+
+	@Override
+	protected InterfaceCrud<Cidade> getController() {
+		return cidadeController;
+	}
 
 }
