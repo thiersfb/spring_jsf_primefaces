@@ -13,7 +13,8 @@ import javax.faces.event.ExceptionQueuedEvent;
 import javax.faces.event.ExceptionQueuedEventContext;
 
 import org.hibernate.SessionFactory;
-import org.primefaces.context.RequestContext;
+//import org.primefaces.context.RequestContext;
+import org.primefaces.PrimeFaces;
 
 import br.com.framework.hibernate.session.HibernateUtil;
 
@@ -84,9 +85,12 @@ public class CustomExceptionHandler extends ExceptionHandlerWrapper {
 					
 					// PrimeFaces
 					// Alert apenas é exibido se a pagina não redirecionar
-					RequestContext.getCurrentInstance().execute("alert('O sistema se recuperou de um erro inesperado.')");
-					
-					RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(FacesMessage.SEVERITY_INFO, "Ërro", "O sistema se recuperou de um erro inesperado."));
+					//RequestContext.getCurrentInstance().execute("alert('O sistema se recuperou de um erro inesperado.')");
+					 
+					//RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(FacesMessage.SEVERITY_INFO, "Ërro", "O sistema se recuperou de um erro inesperado."));
+					// PrimeFaces Dialog
+                    PrimeFaces.current().dialog().showMessageDynamic(new FacesMessage(FacesMessage.SEVERITY_INFO, "Erro", "O sistema se recuperou de um erro inesperado."));
+
 					
 					// Redireciona para a página de erro
 					navigationHandler.handleNavigation(facesContext, null, "/error/error.jsf?faces-redirect=true&expired=true");

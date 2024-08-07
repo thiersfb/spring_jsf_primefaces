@@ -13,7 +13,7 @@
 	<http auto-config="true"
 			access-denied-page="/error/acessoNegado.xhtml" 
 			use-expressions="true">
-	  		
+			
 	   <intercept-url pattern="/cadastro/cad_permissao.jsf" 
 	    access="hasAnyRole('ADMIN')" method="POST"/>
 	    

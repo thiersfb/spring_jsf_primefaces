@@ -28,7 +28,7 @@ import org.hibernate.envers.NotAudited;
 
 import br.com.project.annotation.IdentificaCampoPesquisa;
 
-import com.sun.istack.internal.NotNull;
+//import com.sun.istack.internal.NotNull;
 
 @Audited
 @Entity
@@ -60,7 +60,7 @@ public class Estado implements Serializable {
 	@Basic 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "pais")
-	@NotNull
+	//@NotNull
 	@ForeignKey(name = "pais_fk")
 	private Pais pais = new Pais();
 	

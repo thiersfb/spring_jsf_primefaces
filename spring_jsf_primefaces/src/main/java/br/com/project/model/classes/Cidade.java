@@ -18,7 +18,9 @@ import javax.persistence.Version;
 
 import org.hibernate.annotations.ForeignKey;
 import org.hibernate.envers.Audited;
-import org.primefaces.json.JSONObject;
+//import org.primefaces.json.JSONObject;
+import org.primefaces.shaded.json.JSONObject;
+
 
 import br.com.project.annotation.IdentificaCampoPesquisa;
 

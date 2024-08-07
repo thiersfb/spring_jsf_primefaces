@@ -11,8 +11,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-//import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
-import org.apache.tomcat.dbcp.dbcp.BasicDataSource;
+import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
+//import org.apache.tomcat.dbcp.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;

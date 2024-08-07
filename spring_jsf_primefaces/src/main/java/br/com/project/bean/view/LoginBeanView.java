@@ -1,5 +1,6 @@
 package br.com.project.bean.view;
 
+//import jakarta.annotation.Resource;
 import javax.annotation.Resource;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -7,7 +8,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletRequest;
 
-import org.primefaces.context.RequestContext;
+//import org.primefaces.context.RequestContext;
+import org.primefaces.PrimeFaces;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,6 +54,7 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 		
 	}
 	
+	/*
 	public void invalidar(ActionEvent actionEvent) throws Exception {
 		RequestContext context = RequestContext.getCurrentInstance();
 		FacesMessage message = null;
@@ -71,6 +74,28 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 		
 		context.addCallbackParam("loggedIn", loggedIn);
 	}
+	*/
+	
+	public void invalidar(ActionEvent actionEvent) throws Exception {
+        FacesMessage message = null;
+        boolean loggedIn = false;
+
+        if (srvLogin.autentico(getUsername(), getPassword())) {
+            sessionController.invalidateSession(getUsername());
+            loggedIn = true;
+        } else {
+            loggedIn = false;
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Acesso negado", "Login e/ou senha incorreto");
+        }
+
+        if (message != null) {
+            FacesContext.getCurrentInstance().addMessage("msg", message);
+        }
+
+        // Utiliza PrimeFaces para callback
+        PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);
+    }
+	
 	
 	public String getUsername() {
 		return username;

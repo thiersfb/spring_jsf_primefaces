@@ -28,6 +28,12 @@
 							</div>
 							
 							<div class="panel-body">
+								
+								<h:commandLink immediate="true">
+									<p:fileDownload value="#{cidadeBeanView.arquivoReport}" />
+									<h:graphicImage library="img" name="pdf.png" />
+								</h:commandLink>
+								
 								<h:form id="formCadastro" prependId="false">
 									<!-- define variável -->
 									<c:set var="isCadastro" value="true" scope="view" />
