@@ -121,22 +121,22 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
-		<!--
+		
 		<dependency>
 		    <groupId>commons-dbcp</groupId>
 		    <artifactId>commons-dbcp</artifactId>
 		    <version>1.4</version>
 		</dependency>
-		-->
+		
 
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
-		
+		<!--
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-dbcp2</artifactId>
 			<version>2.9.0</version>
 		</dependency>
-		
+		-->
 
 		<!--
 		https://mvnrepository.com/artifact/commons-digester/commons-digester -->
@@ -288,26 +288,34 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-    		<!--<version>5.2.11.Final</version>-->
-			<version>5.3.20.Final</version>
+			<!--<version>5.3.20.Final</version>-->
+     <version>4.3.11.Final</version>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-envers -->
 		<dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-envers</artifactId>
-		    <version>5.3.20.Final</version>
-			<!--<version>5.0.0.Final</version>-->
+		    <!--<version>5.3.20.Final</version>-->
+     <version>4.3.11.Final</version>
 		</dependency>
-
-
-		<!--
-		https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
+		
+		
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate -->
 		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.1-api</artifactId>
-			<version>1.0.0.Final</version>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate</artifactId>
+		    <version>3.0</version>
 		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.0-api -->
+		<dependency>
+		    <groupId>org.hibernate.javax.persistence</groupId>
+		    <artifactId>hibernate-jpa-2.0-api</artifactId>
+		    <version>1.0.0.Final</version>
+		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/org.hsqldb/hsqldb -->
 		<dependency>
@@ -355,8 +363,8 @@
 		<dependency>
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
-			<!--<version>7.0.0</version>-->
-			<version>5.5.0</version>
+		    <version>6.20.0</version>
+			<!--<version>5.5.0</version>-->
 		</dependency>
 		
 
@@ -473,7 +481,7 @@
 		<dependency>
 		    <groupId>javax.faces</groupId>
 		    <artifactId>javax.faces-api</artifactId>
-		    <version>2.3</version>
+		    <version>2.2</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-impl -->
@@ -486,13 +494,12 @@
 		-->
 		
 		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
-		<!--
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
+			<scope>provided</scope>
 		</dependency>
-		-->
 
 		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl-api -->
 		<!--
@@ -518,20 +525,28 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.5</version>
-			<!--<version>4.13.2</version>-->
+			<!--<version>4.5</version>-->
+			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
 		
 		
 		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
-		
+		<!--
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
+		-->
 		
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-core</artifactId>
+		    <version>2.12.1</version>
+		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/org.openid4java/openid4java-nodeps -->
 		<!--
@@ -647,21 +662,22 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>4.2.0.RELEASE</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-asm -->
+		<!--
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-asm</artifactId>
 			<version>3.1.4.RELEASE</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+		</depend>
+		-->
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>4.2.0.RELEASE</version>
 		</dependency>
 
 		<!--
@@ -669,7 +685,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>4.2.0.RELEASE</version>
 		</dependency>
 
 		<!--
@@ -677,109 +693,109 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>4.2.0.RELEASE</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>4.2.0.RELEASE</version>
 		</dependency>
-
+		
 		<!--
 		https://mvnrepository.com/artifact/org.springframework/spring-expression -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-expression</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>4.2.0.RELEASE</version>
 		</dependency>
-
+		
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>4.2.0.RELEASE</version>
 		</dependency>
-
+		
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>4.2.0.RELEASE</version>
 		</dependency>
-
+		
 		<!--
 		https://mvnrepository.com/artifact/org.springframework.security/spring-security-acl -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-acl</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>4.2.0.RELEASE</version>
 		</dependency>
-
+		
 		<!--
 		https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>4.2.0.RELEASE</version>
 		</dependency>
-
+		
 		<!--
 		https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>4.2.0.RELEASE</version>
 		</dependency>
-
+		
 		<!--
 		https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>4.2.0.RELEASE</version>
 		</dependency>
-
+		
 		<!--
 		https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>4.2.0.RELEASE</version>
 		</dependency>
-
+		
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>4.1.0.RELEASE</version>
-			<scope>test</scope>
+			<version>4.2.0.RELEASE</version>
+		<!--<scope>test</scope>-->
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>4.2.0.RELEASE</version>
 		</dependency>
-
+		
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>4.2.0.RELEASE</version>
 		</dependency>
-
+		
 		<!--
 		https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>4.1.0.RELEASE</version>
+	<version>4.2.0.RELEASE</version>
 		</dependency>
-
+		
 		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/start -->
 		<!--
 <dependency>
@@ -818,7 +834,7 @@
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.faces</artifactId>
-            <version>2.3.9</version>
+            <version>2.2.20</version>
         </dependency>
         
 		<!-- https://mvnrepository.com/artifact/org.glassfish.web/jstl-impl -->
@@ -831,11 +847,13 @@
 
 		
 		<!-- https://mvnrepository.com/artifact/org.glassfish.web/el-impl -->
+		
 		<dependency>
 			<groupId>org.glassfish.web</groupId>
 			<artifactId>el-impl</artifactId>
 			<version>2.2</version>
 		</dependency>
+		
 
 <dependency>
     <groupId>javax</groupId>
@@ -843,15 +861,26 @@
     <version>6.0</version>
     <scope>provided</scope>
 </dependency>
-
+<!--
 <dependency>
     <groupId>javax.servlet.jsp</groupId>
     <artifactId>jsp-api</artifactId>
     <version>2.1</version>
     <scope>provided</scope>
 </dependency>
+-->
+
+<!-- https://mvnrepository.com/artifact/javax.servlet.jsp/jsp-api -->
+<dependency>
+    <groupId>javax.servlet.jsp</groupId>
+    <artifactId>jsp-api</artifactId>
+    <version>2.0</version>
+    <scope>provided</scope>
+</dependency>
 
 
+
+<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
 <dependency>
     <groupId>javax.servlet</groupId>
     <artifactId>servlet-api</artifactId>
@@ -859,8 +888,10 @@
     <scope>provided</scope>
 </dependency>
 
-	</dependencies>
+	
+</dependencies>
 
+	
 	<build>
 		<resources>
 			<resource>
@@ -885,4 +916,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	
 </project>

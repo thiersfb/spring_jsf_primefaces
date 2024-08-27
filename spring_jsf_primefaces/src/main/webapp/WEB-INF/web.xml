@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<!--
 <web-app xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" 
 xmlns="https://java.sun.com/xml/ns/javaee" 
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
@@ -9,17 +9,19 @@ xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp"
 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 id="WebApp_ID" metadata-complete="true" version="3.0">
 
-
-<!-- 
+-->
+ 
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" 
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
                              http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-         version="3.1">
-  -->
+         id="WebApp_ID" metadata-complete="true" version="3.1">
+  
   
   <!-- <display-name>spring_jsf_primefaces</display-name> -->
   <display-name>Projeto Java Web Completo</display-name>
+  <absolute-ordering />
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
 	<!--
@@ -114,28 +116,6 @@ id="WebApp_ID" metadata-complete="true" version="3.0">
   </context-param>
   
   
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>applicationContext.xml</param-value>
-</context-param>
-
-<!-- Configure ContextLoaderListener to use AnnotationConfigWebApplicationContext
-instead of the default XmlWebApplicationContext -->
-<context-param>
-    <param-name>contextClass</param-name>
-    <param-value>
-    org.springframework.web.context.support.AnnotationConfigWebApplicationContext
-    </param-value>
-</context-param>
-
-<!-- Configuration locations must consist of one or more comma- or space-delimited
-fully-qualified @Configuration classes. Fully-qualified packages may also
-be specified for component-scanning -->
-<context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>com.nirav.modi.config.SpringAppConfig</param-value>
-</context-param>
-  
   <filter>
   	<filter-name>conexaoFilter</filter-name>
   	<filter-class>br.com.project.filter.FilterOpenSessionInView</filter-class>
@@ -189,16 +169,6 @@ be specified for component-scanning -->
   
   <listener>
   	<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-  </listener>
-  
-  <!--
-  <listener>
-  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
-  -->
-  
-  <listener>
-	<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
   </listener>
   
   <listener>

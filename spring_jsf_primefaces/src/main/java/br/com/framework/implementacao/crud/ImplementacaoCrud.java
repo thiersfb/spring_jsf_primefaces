@@ -9,7 +9,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
-import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
+//import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,7 +30,8 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	private JdbcTemplateImpl jdbcTemplate;
 
 	@Autowired
-	private SimpleJdbcTemplateImpl simpleJdbcTemplate;
+	//private SimpleJdbcTemplateImpl simpleJdbcTemplate;
+	private JdbcTemplateImpl simpleJdbcTemplate;
 
 	@Autowired
 	private SimpleJdbcInsertImpl simpleJdbcInsert;
@@ -38,9 +40,11 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	//private SimpleJdbcClassImpl simpleJdbcClass;
 	
 	@Autowired
-	private SimpleJdbcTemplateImpl simpleJdbcTemplateImpl;
+	//private SimpleJdbcTemplateImpl simpleJdbcTemplateImpl;
+	private JdbcTemplateImpl simpleJdbcTemplateImpl;
 	
-	public SimpleJdbcTemplate getSimpleJdbcTemplateImpl() {
+	//public SimpleJdbcTemplate getSimpleJdbcTemplateImpl() {
+	public JdbcTemplate getSimpleJdbcTemplateImpl() {
 		return simpleJdbcTemplateImpl;
 	}
 	
@@ -175,7 +179,8 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	}
 
 	@Override
-	public SimpleJdbcTemplate getSimpleJdbcTemplate() {
+	//public SimpleJdbcTemplate getSimpleJdbcTemplate() {
+	public JdbcTemplate getSimpleJdbcTemplate() {
 		return simpleJdbcTemplate;
 	}
 
@@ -188,7 +193,8 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	public Long totalRegistros(String table) throws Exception {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" select count(1) from ").append(table);
-		return jdbcTemplate.queryForLong(sql.toString());
+		//return jdbcTemplate.queryForLong(sql.toString());
+		return jdbcTemplate.queryForObject(sql.toString(), Long.class);
 	}
 	@Override
 	public Query obterQuery(String query) throws Exception {

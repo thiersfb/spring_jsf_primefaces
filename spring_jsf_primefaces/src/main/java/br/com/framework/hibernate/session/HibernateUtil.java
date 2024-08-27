@@ -19,6 +19,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.engine.spi.SessionImplementor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.framework.implementacao.crud.VariavelConexaoUtil;
 
@@ -29,13 +30,14 @@ import br.com.framework.implementacao.crud.VariavelConexaoUtil;
  */
 @ApplicationScoped
 public class HibernateUtil implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
+    
+    private static final long serialVersionUID = 1L;
     private static final Logger LOGGER = LoggerFactory.getLogger(HibernateUtil.class);
 
     public static final String JAVA_COMP_ENV_JDBC_DATA_SOURCE = "java:/comp/env/jdbc/datasource";
     
-    private static SessionFactory sessionFactory;
+    @Autowired
+    private static SessionFactory sessionFactory=buildSessionFactory();
     
     /**
      * Inicializa a SessionFactory ao iniciar o contexto.
@@ -64,6 +66,9 @@ public class HibernateUtil implements Serializable {
     private static SessionFactory buildSessionFactory() {
         try {
             return new Configuration().configure().buildSessionFactory();
+            //return (SessionFactory) sessionFactory.openSession();
+             
+            
         } catch (Exception e) {
             LOGGER.error("Erro ao criar a SessionFactory", e);
             throw new ExceptionInInitializerError("Erro ao criar a SessionFactory");
@@ -124,6 +129,6 @@ public class HibernateUtil implements Serializable {
         InitialContext context = new InitialContext();
         return (DataSource) context.lookup(VariavelConexaoUtil.JAVA_COMP_ENV_JDBC_DATA_SOURCE);
     }
-	
+    
 
 }
