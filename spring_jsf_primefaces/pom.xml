@@ -130,13 +130,13 @@
 		
 
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
-		<!--
+		
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-dbcp2</artifactId>
 			<version>2.9.0</version>
 		</dependency>
-		-->
+		
 
 		<!--
 		https://mvnrepository.com/artifact/commons-digester/commons-digester -->
@@ -245,13 +245,14 @@
 			<type>pom</type>	
 		</dependency>
 		-->
-
+		
+		<!--
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>facelets-taglib-jsf20-spring-3</artifactId>
 			<version>0.6</version>
 		</dependency>
-
+		-->
 		<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core -->
 		<dependency>
 			<groupId>org.flywaydb</groupId>
@@ -673,7 +674,15 @@
 			<version>3.1.4.RELEASE</version>
 		</depend>
 		-->
-<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+		<!--
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		-->
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
@@ -793,7 +802,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-	<version>4.2.0.RELEASE</version>
+			<version>4.2.0.RELEASE</version>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/start -->

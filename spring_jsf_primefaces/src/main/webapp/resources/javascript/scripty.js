@@ -116,8 +116,12 @@ function addMascaraDecimalMonetaria(id) {
 }
 
 function validarSenhaLogin() {
+	/*
 	j_username = document.getElementById('j_username').value;
 	j_password = document.getElementById('j_password').value;
+	*/
+	j_username = document.getElementById('username').value;
+	j_password = document.getElementById('password').value;
 
 	if (j_username === null || j_username.trim() === '') {
 		alert("Informe o Login.");

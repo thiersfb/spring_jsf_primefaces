@@ -58,6 +58,7 @@ public class FilterOpenSessionInView extends DelegatingFilterProxy implements Se
 			HttpServletRequest request2 = (HttpServletRequest) request;
 			HttpSession sessao = request2.getSession();
 			Entidade userLogadoSessao = (Entidade) sessao.getAttribute("userLogadoSessao");
+			//Entidade userLogadoSessao = (Entidade) sessao.getAttribute("username");
 			
 			if (userLogadoSessao != null){
 				UtilFramework.getThreadLocal().set(userLogadoSessao.getEnt_codigo());

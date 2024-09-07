@@ -30,6 +30,13 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 	private String username;
 	private String password;
 	
+	/*
+	@GetMapping("j_spring_security_check")
+	private String j_spring_security_check() {
+		return "j_spring_security_check";
+	}
+	*/
+	
 	@Resource
 	private SessionController sessionController;
 	
